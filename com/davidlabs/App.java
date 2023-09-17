@@ -22,136 +22,137 @@ public class App
     {
         System.out.println( "Hello World!" );
         IPrintable<String> printThis = (String) -> System.out.println(String);
-        printThis.print("Printable Lambda");
+        //printThis.print("Printable Lambda");
         
         Consumer<String> printThat = System.out::println;
-        printThat.accept("Printable Lambda");
+        //printThat.accept("Printable Lambda");
 
         IRetrievble<Integer> retrieverLambda = () -> {return 77;};
-        System.out.println(retrieverLambda.retrieve());
+        //System.out.println(retrieverLambda.retrieve());
 
         Supplier<Integer> supplierRLambda = () -> {return 77;};
-        System.out.println(supplierRLambda.get());
+        //System.out.println(supplierRLambda.get());
 
         IEvaluate<Integer> evaluateLambda = i -> i<0;
-        System.out.println(evaluateLambda.isNegative(43));
-        System.out.println(evaluateLambda.isNegative(-43));
+        //System.out.println(evaluateLambda.isNegative(43));
+        //System.out.println(evaluateLambda.isNegative(-43));
 
         Predicate<Integer> predicateLambda = i -> i<0;
-        System.out.println(predicateLambda.test(43));
-        System.out.println(predicateLambda.test(-43));
+        //System.out.println(predicateLambda.test(43));
+        //System.out.println(predicateLambda.test(-43));
 
         Predicate<Integer> integerPredicate = (integer) -> integer%2==0;
-        System.out.println("3c1 " + check(4,integerPredicate));
-        System.out.println("3c1 " + check(7,integerPredicate));
+        //System.out.println("3c1 " + check(4,integerPredicate));
+        //System.out.println("3c1 " + check(7,integerPredicate));
 
         Predicate<String> beginsWithMr = (string) -> string.startsWith("Mr.");
         Predicate<String> beginsWithMs = (string) -> string.startsWith("Ms.");
-        System.out.println("3c2 "+check("Mr. Joe Bloggs",beginsWithMr));
-        System.out.println("3c2 "+check("Ms. Ann Bloggs",beginsWithMs));
+        //System.out.println("3c2 "+check("Mr. Joe Bloggs",beginsWithMr));
+        //System.out.println("3c2 "+check("Ms. Ann Bloggs",beginsWithMs));
 
         Predicate<Person> personWithAge = (person) -> person.age >=18;
 
         Person Mike = new Person(1.8,33);
         Person Ann = new Person(1.4,13);
 
-        System.out.println("3c3 " + check(Mike, personWithAge));
-        System.out.println("3c3 " + check(Ann, personWithAge));
+        //System.out.println("3c3 " + check(Mike, personWithAge));
+        //System.out.println("3c3 " + check(Ann, personWithAge));
 
         IFunctionable<Integer> func = (integer) -> {return "Number is " + integer; };
-        System.out.println(func.applyThis(25));
+        //System.out.println(func.applyThis(25));
 
         Function<Integer,String> func2 = (integer) -> { return "Number is " + integer;};
-        System.out.println(func2.apply(26));
+        //System.out.println(func2.apply(26));
 
         List<Person> listPeople = getPeople();
 
-        System.out.println("*******     SORT BY AGE LAMBDA      *******");
+        //System.out.println("*******     SORT BY AGE LAMBDA      *******");
         sortAgeLambda(listPeople);
-        listPeople.forEach(System.out::println);
-        System.out.println("*******     SORT BY NAME LAMBDA     *******");
+        //listPeople.forEach(System.out::println);
+        //System.out.println("*******     SORT BY NAME LAMBDA     *******");
         sortNameLambda(listPeople);
-        listPeople.forEach(System.out::println);
-        System.out.println("*******     SORT BY HEIGHT LAMBDA     *******");
+        //listPeople.forEach(System.out::println);
+        //System.out.println("*******     SORT BY HEIGHT LAMBDA     *******");
         sortHeightLambda(listPeople);
-        listPeople.forEach(System.out::println);
+        //listPeople.forEach(System.out::println);
         
-        System.out.println("*******     SORT BY AGE       *******");
+        //System.out.println("*******     SORT BY AGE       *******");
         sortAge(listPeople);
-        listPeople.forEach(System.out::println);
-        System.out.println("*******     SORT BY NAME       *******");
+        //listPeople.forEach(System.out::println);
+        //System.out.println("*******     SORT BY NAME       *******");
         sortName(listPeople);
-        listPeople.forEach(System.out::println);
-        System.out.println("*******     SORT BY HEIGHT      *******");
+        //listPeople.forEach(System.out::println);
+        //System.out.println("*******     SORT BY HEIGHT      *******");
         sortHeight(listPeople);
-        listPeople.forEach(System.out::println);
+        //listPeople.forEach(System.out::println);
         List<Integer> integerList = new ArrayList<Integer>();
         staticMR(integerList);
 
         Consumer<List<Integer>> consumer = (list) -> Collections.sort(list);
         consumer.accept(integerList);
-        integerList.forEach(System.out::println);
+        //integerList.forEach(System.out::println);
 
         staticMR(integerList);
-        integerList.forEach(System.out::println);
+        //integerList.forEach(System.out::println);
         Consumer<List<Integer>> consumerMR = Collections::sort;
         consumerMR.accept(integerList);
-        integerList.forEach(System.out::println);
+        //integerList.forEach(System.out::println);
 
         String name= "Mr. Joe Bloggs";
         Predicate<String> startsWithMr = (string) -> string.startsWith("Mr.");
-        System.out.println(startsWithMr.test(name));
-        System.out.println(startsWithMr.test("Ms. Hoe Bloggs"));
+        //System.out.println(startsWithMr.test(name));
+        //System.out.println(startsWithMr.test("Ms. Hoe Bloggs"));
         Predicate<String> startsWithMrMR = name::startsWith;
-        System.out.println(startsWithMrMR.test("Ms."));
+        //System.out.println(startsWithMrMR.test("Ms."));
 
         Predicate<String> containsLambda = (string) -> string.toLowerCase().contains("joe");
-        System.out.println("11 " + containsLambda.test("Joey from friends"));
-        System.out.println(containsLambda.test("Chandler from friends"));
+        //System.out.println("11 " + containsLambda.test("Joey from friends"));
+        //System.out.println(containsLambda.test("Chandler from friends"));
 
         name = "Joey";
         Predicate<String> containsMRV = name.toLowerCase()::contains;
-        System.out.println(containsMRV.test("joe"));
-        System.out.println(containsMRV.test("Chandler"));
+        //System.out.println(containsMRV.test("joe"));
+        //System.out.println(containsMRV.test("Chandler"));
 
         Predicate<String> emptyL = (string) -> string.isEmpty();
-        System.out.println(emptyL.test(""));
-        System.out.println(emptyL.test("xyz"));
+        //System.out.println(emptyL.test(""));
+        //System.out.println(emptyL.test("xyz"));
 
         Predicate<String> emptyMR = String::isEmpty;
-        System.out.println(emptyMR.test(""));
-        System.out.println(emptyMR.test("xyz"));
+        //System.out.println(emptyMR.test(""));
+        //System.out.println(emptyMR.test("xyz"));
 
         BiPredicate<String, String> emptyLBP = (string1,string2) -> string1.contains(string2);
-        System.out.println(emptyLBP.test("Mr. Joe Bloggs", "Mr."));
-        System.out.println(emptyLBP.test("Mr. Joe Bloggs", "Ms."));
+        //System.out.println(emptyLBP.test("Mr. Joe Bloggs", "Mr."));
+        //System.out.println(emptyLBP.test("Mr. Joe Bloggs", "Ms."));
 
         BiPredicate<String, String> emptyLBPMR = String::contains;
-        System.out.println(emptyLBPMR.test("Mr. Joe Bloggs", "Mr."));
-        System.out.println(emptyLBPMR.test("Mr. Joe Bloggs", "Ms."));
+        //System.out.println(emptyLBPMR.test("Mr. Joe Bloggs", "Mr."));
+        //System.out.println(emptyLBPMR.test("Mr. Joe Bloggs", "Ms."));
 
 
         Supplier<List<String>> supp = () -> new ArrayList<String>();
         List<String> l = supp.get();
         l.add("Lambda");
-        System.out.println(l);
+        //System.out.println(l);
 
         Supplier<List<String>> supp2 = ArrayList<String> :: new;
         List<String> l2 = supp2.get();
         l2.add("Method Reference");
-        System.out.println(l2);
+        //System.out.println(l2);
 
         Function<Integer, List<String>> functionList = (integer) -> new ArrayList<String>(integer);
         List<String> list= functionList.apply(20);
         list.add("Lambda");
-        System.out.println(list);
+        //System.out.println(list);
         Function<Integer, List<String>> functionList2 = ArrayList::new;
         List<String> list2 = functionList2.apply(20);
         list2.add("method reference");
-        System.out.println(functionList2);
+        //System.out.println(functionList2);
 
 
         //Streams . Chapter 2.
+        
 
     }   
     public static<T,U> boolean check(T t, Predicate<T> predicate) {
